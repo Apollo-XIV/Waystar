@@ -14,5 +14,6 @@ jobs:
     needs: [check-infrastructure-config]
     runs-on: ubuntu-latest
 
-    steps: 
+    steps:
+    - uses: actions/checkout@v3
     - uses: ./.github/workflows/next-build.yml
