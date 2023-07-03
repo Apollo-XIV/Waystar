@@ -6,14 +6,46 @@ on:
   workflow_dispatch:
 
 jobs:
+
+
   check-infrastructure-config:
     name: Check Infrastructure Configuration
     uses: ./.github/workflows/infrastructure.yml
   
-  dispatch-codebase-jobs:
-    needs: [check-infrastructure-config]
+  changes:
+    name: Check changes in pull request
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+
+    outputs:
+      api: ${{steps.filter.outputs.api}}
+      frontend: ${{steps.filter.outputs.frontend}}
+    
+    steps:
+    - uses: dorny/paths-filter@v2
+      id: filter
+      with:
+        filters: |
+          api:
+          - 'api/**'
+          frontend:
+          - 'frontend/**'
+      
+  build-frontend:
+    needs: [changes, check-infrastructure-config]
+    runs-on: ubuntu-latest
+    if: steps.filter.outputs.frontend == 'true'
 
     steps:
     - uses: actions/checkout@v3
     - uses: ./.github/workflows/next-build.yml
+  
+  build-api:
+    needs: [changes, check-infrastructure-config]
+    runs-on: ubuntu-latest
+    if: steps.filter.outputs.api == 'true'
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: ./.github/workflows/api-image.yml
