@@ -35,7 +35,7 @@ jobs:
   build-frontend:
     needs: [changes, check-infrastructure-config]
     runs-on: ubuntu-latest
-    if: steps.filter.outputs.frontend == 'true'
+    if: ${{ needs.changes.outputs.frontend == 'true'}}
 
     steps:
     - uses: actions/checkout@v3
@@ -44,7 +44,7 @@ jobs:
   build-api:
     needs: [changes, check-infrastructure-config]
     runs-on: ubuntu-latest
-    if: steps.filter.outputs.api == 'true'
+    if: ${{ needs.changes.outputs.api == 'true' }}
 
     steps:
     - uses: actions/checkout@v3
