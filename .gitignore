@@ -129,4 +129,5 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-cdn/static/*
+cdn/static
+api/build

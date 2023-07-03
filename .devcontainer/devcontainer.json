@@ -24,7 +24,10 @@
 		}
 	},
 	"runArgs": ["--name=dev"],
-	"containerUser": "dev"	
+	"containerUser": "dev",
+	"mounts": [
+		"source=${env:HOME}${env:USERPROFILE}/.minikube,target=/usr/local/share/minikube-localhost,type=bind"
+	]
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 

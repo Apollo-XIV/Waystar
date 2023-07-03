@@ -1,16 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: next-server
+  name: api-server
   namespace: default
 spec:
   selector:
-    app: next-server
+    app: api-server
   type: ClusterIP
-  sessionAffinity: ClientIP
-  sessionAffinityConfig:
-    clientIP:
-      timeoutSeconds: 10800
   ports:
   - name: next-server
     protocol: TCP
@@ -22,14 +18,14 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name:  next-server
+  name:  api-server
   namespace: default
   labels:
-    app:  next-server
+    app:  api-server
 spec:
   selector:
     matchLabels:
-      app: next-server
+      app: api-server
   replicas: 1
   strategy:
     rollingUpdate:
@@ -39,15 +35,15 @@ spec:
   template:
     metadata:
       labels:
-        app:  next-server
+        app:  api-server
     spec:
       # initContainers:
         # Init containers are exactly like regular containers, except:
           # - Init containers always run to completion.
           # - Each init container must complete successfully before the next one starts.
       containers:
-      - name:  next-server
-        image: ghcr.io/apollo-xiv/k8s-frontend:latest
+      - name:  api-server
+        image: ghcr.io/apollo-xiv/k8s-api:latest
         resources:
           requests:
             cpu: 100m
@@ -58,7 +54,14 @@ spec:
         env:
         - name: NODE_ENV
           value: production
+        - name: PORT
+          value: "3000"
+        - name: DB_HOST
+          valueFrom:
+            secretKeyRef: 
+              name: db-url
+              key: DB_HOST
         ports:
         - containerPort:  3000
-          name:  next-server
+          name:  api-server
       restartPolicy: Always

@@ -1,11 +1,6 @@
 'use client';
-import { useContext } from "react";
-import PostContext from "@/components/posts/PostCtx";
 import { usePostCtx } from "../PostCtx/PostCtx";
 import Post from "../Post";
-import { PostType } from "../Post/typedef";
-import useFetch from "@/hooks/useFetch";
-import { PostCtxType } from "../postTypes";
 
 export default function PostArray() {
 
