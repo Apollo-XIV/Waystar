@@ -1,4 +1,4 @@
 FROM nginx
 WORKDIR /var/www/
 ADD ./static /var/www/static
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY default.conf /etc/nginx/conf.d/default.conf
