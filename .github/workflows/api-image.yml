@@ -23,7 +23,8 @@ jobs:
 
 
   api-image:
-    permissions: write-all
+    permissions:
+      packages: write
     name: Build and Push API docker image
     runs-on: ubuntu-latest
     needs: [build]
