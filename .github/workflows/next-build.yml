@@ -28,8 +28,10 @@ jobs:
         path: frontend/build/static/
 
   static:
+    needs: [build]
     uses: ./.github/workflows/cdn-image.yml
 
 
   server:
+    needs: [build]
     uses: ./.github/workflows/frontend-image.yml
