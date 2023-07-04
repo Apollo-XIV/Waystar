@@ -11,6 +11,7 @@ jobs:
 
 
   check-infrastructure-config:
+    # terraform
     name: Check Infrastructure Configuration
     uses: ./.github/workflows/infrastructure.yml
   
@@ -36,11 +37,18 @@ jobs:
           - 'frontend/**'
       
   build-frontend:
+    name: Build and Push Server Images
     needs: [changes, check-infrastructure-config]
     if: ${{ needs.changes.outputs.frontend == 'true'}}
     uses: ./.github/workflows/next-build.yml
   
   build-api:
+    name: Build and Push API Image
     needs: [changes, check-infrastructure-config]
     if: ${{ needs.changes.outputs.api == 'true' }}
     uses: ./.github/workflows/api-image.yml
+
+  deploy-changes:
+    name: Deploy Changes to Kubernetes
+    needs: [build-frontend, build-api]
+    uses: ./.github/workflows/kubernetes.yml

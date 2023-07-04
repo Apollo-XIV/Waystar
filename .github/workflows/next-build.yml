@@ -28,46 +28,8 @@ jobs:
         path: frontend/build/static/
 
   static:
-    permissions: write-all
-    name: Build static image
-    needs: [build]
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/download-artifact@v3
-        with:
-          name:  next-static
-          path:  cdn/static/
-      - uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{github.actor}}
-          password: ${{secrets.GITHUB_TOKEN}}
-      - name: Build the Docker image
-        run: cd cdn && docker compose -f ./docker-compose.yml build
-      - name: Push to GHCR.io
-        run: docker push ghcr.io/apollo-xiv/k8s-cdn:latest
+    uses: ./.github/workflows/cdn-image.yml
 
 
   server:
-    permissions: write-all
-    name: Build server image
-    needs: [build]
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/download-artifact@v3
-        with:
-          name:  next-server
-          path:  frontend/build/standalone
-      - uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{github.actor}}
-          password: ${{secrets.GITHUB_TOKEN}}
-      - name: Build the Docker image
-        run: cd frontend && docker compose -f ./docker/production/docker-compose.yml build
-      - name: Push to GHCR.io
-        run: docker push ghcr.io/apollo-xiv/k8s-frontend:latest
+    uses: ./.github/workflows/frontend-image.yml
