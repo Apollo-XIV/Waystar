@@ -37,12 +37,8 @@ jobs:
       
   build-frontend:
     needs: [changes, check-infrastructure-config]
-    runs-on: ubuntu-latest
     if: ${{ needs.changes.outputs.frontend == 'true'}}
-
-    steps:
-    - uses: actions/checkout@v3
-    - uses: ./.github/workflows/next-build.yml
+    uses: ./.github/workflows/next-build.yml
   
   build-api:
     needs: [changes, check-infrastructure-config]
