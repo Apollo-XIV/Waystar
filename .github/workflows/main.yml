@@ -38,17 +38,17 @@ jobs:
       
   build-frontend:
     name: Build and Push Server Images
-    needs: [changes, check-infrastructure-config]
+    needs: [changes]
     if: ${{ needs.changes.outputs.frontend == 'true'}}
     uses: ./.github/workflows/next-build.yml
   
   build-api:
     name: Build and Push API Image
-    needs: [changes, check-infrastructure-config]
+    needs: [changes]
     if: ${{ needs.changes.outputs.api == 'true' }}
     uses: ./.github/workflows/api-image.yml
 
   deploy-changes:
     name: Deploy Changes to Kubernetes
-    needs: [build-frontend, build-api]
+    needs: [build-frontend, build-api, check-infrastructure-config]
     uses: ./.github/workflows/kubernetes.yml
