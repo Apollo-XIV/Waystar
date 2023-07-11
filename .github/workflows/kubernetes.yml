@@ -1,3 +1,5 @@
+name: Deploy Changes to Cluster
+
 on:
   workflow_dispatch:
   workflow_call:

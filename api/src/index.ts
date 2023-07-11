@@ -6,7 +6,6 @@ import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import { userRouter } from "./controllers/users/user.router";
 import { chirpRouter } from "./controllers/chirps/chirp.router";
-import { authRouter } from "./controllers/auth/auth.router";
 import { connect } from "./modules/db";
 
 dotenv.config();

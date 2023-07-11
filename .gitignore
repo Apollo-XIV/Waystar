@@ -131,3 +131,4 @@ dist
 
 cdn/static
 api/build
+secrets.yml

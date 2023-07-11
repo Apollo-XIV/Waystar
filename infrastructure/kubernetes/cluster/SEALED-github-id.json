@@ -1,0 +1,22 @@
+{
+  "kind": "SealedSecret",
+  "apiVersion": "bitnami.com/v1alpha1",
+  "metadata": {
+    "name": "github-id",
+    "namespace": "default",
+    "creationTimestamp": null
+  },
+  "spec": {
+    "template": {
+      "metadata": {
+        "name": "github-id",
+        "namespace": "default",
+        "creationTimestamp": null
+      },
+      "type": "Opaque"
+    },
+    "encryptedData": {
+      "GITHUB_ID": "AgBoeqLPVbjRxVIX4w0J3KlyDAYOXioMwvx8ekWdp3VvWoZRhMw1HViOy3x8kkO5pu75LOxAVObl6/HIAVvUka6X8/7ZcPK78iukuvthowrRu7x9SZ9qgPXDRfvt+rA83sf3yYVW37c7pIy3JGp2dVPyBT8LyEtuJTNZOD7PALV51XsoXnUTFNy1jfoa9xiVwGyJzb+jznznB2LfZfxlIav5Q7udfTr4vws+c+//OsXYuS+bD0jXZd1EnsOmzIumq9U/+OUxXZhbIZimlV2psYK1L2rCtZzBWEmDn1Kj2K9YAr/E4vOytmxcWbmQZnI0ZFXHcf9rQqi9/K2WgjvIW3JSgznLgO+TM8jbxBK2nigLjksMZ73eIISQ1j9NlNSgyjBoUrE4b05VgjXak0t6nLPmVUMMmehxZEM+qaCJUrTtAGMedHe1/e6nBkbdUzbc0KAy8hAgIw4g9FpVqwDD04H0ULtV7PyKHd/ZVqWxHD9rYw2Jm5Z6qhmYxCoIT6fESZx99Z8li2rPOG06gAD+RHbHohecBe7XGzK4u7Tj6yp+RSBPH4yvUm16EO61zvTuatEKsaIO8FkKte+1N9Pb7ldhE1dWbB8OzYcRHWcU/Bmq9FchdA6t/WLysqHu89vBfBWa9gHiaDJjmFa1tLvKOCqhTM0Lb/fHitFXmMdhCS73iqtBENzXadrL8g64PGAx+lrlWymt2y0dFdsZO3IKW84="
+    }
+  }
+}

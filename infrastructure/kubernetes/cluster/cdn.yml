@@ -48,6 +48,10 @@ spec:
       containers:
       - name:  next-static
         image: ghcr.io/apollo-xiv/k8s-cdn:latest
+        livenessProbe:
+          httpGet:
+            port: 80
+            scheme: HTTP
         resources:
           requests:
             cpu: 100m
