@@ -14,17 +14,6 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
-  <sodipodi:namedview
-     id="namedview23"
-     pagecolor="#505050"
-     bordercolor="#eeeeee"
-     borderopacity="1"
-     inkscape:showpageshadow="0"
-     inkscape:pageopacity="0"
-     inkscape:pagecheckerboard="0"
-     inkscape:deskcolor="#505050"
-     inkscape:document-units="mm"
-     showgrid="false" />
   <defs
      id="defs18" />
   <g
@@ -113,6 +102,8 @@
 
 ![logo](https://github.com/Apollo-XIV/Waystar/assets/119538960/67468a10-3b05-4e6d-8a10-ef518abcac51)
 # Uncover Shared Stories, Connect Through the Pages
+Waystar is a social media platform designed for bookworms and communities thereof. With waystar you can track your progress through books, leaving notes in the form of logs so that your friends and others can discover them as they catch up.
+Your personal timeline is tailored to fit exactly with where you are in your favourite books, ensuring you never get a spoiler or reveal you weren't ready for.
 
 ## Technologies in use:
 - Next.js 13
