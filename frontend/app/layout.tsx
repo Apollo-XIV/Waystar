@@ -1,6 +1,7 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import Logo from '@/components/Logo'
+import Noise from '@/components/Noise'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -24,6 +25,7 @@ export default function RootLayout({
         <main className='absolute inset-0 bg-[#dbcdb8] dark:bg-[#303666]'>
           {children}
         </main>
+        <Noise />
       </body>
     </html>
   )
