@@ -4,7 +4,7 @@ import { PostType } from "@/components/posts/Post/typedef";
 
 export default function useFetch(url: string) {
     const [data, setData] = useState<PostType[]>();
-    const [error, setError] = useState<any>();
+    const [error, setError] = useState<Error | null>();
     const [loading, setLoading] = useState(false);
 
     const fetchData = async () => {

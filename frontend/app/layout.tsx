@@ -22,10 +22,10 @@ export default function RootLayout({
       </head>
       <body className={inter.className }>
         <Logo />
-        <main className='absolute inset-0 bg-[#dbcdb8] dark:bg-[#303666]'>
+        <main className='absolute inset-0 bg-[#dbcdb8] dark:bg-[#303666] overflow-hidden'>
           {children}
         </main>
-        <Noise />
+        {/* <Noise /> */}
       </body>
     </html>
   )

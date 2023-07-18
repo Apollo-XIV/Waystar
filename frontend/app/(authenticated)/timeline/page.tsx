@@ -7,6 +7,7 @@ import PostArray from "@/components/posts/PostArray";
 export default function Home() {
   return (
     <>
+    
     <AuthCtx>
       <div className="fixed top-4 right-4">
       <UserBox />
