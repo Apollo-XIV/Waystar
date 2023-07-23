@@ -11,6 +11,16 @@ module.exports = {
       'display': ['Alice', 'Times New Roman', 'Georgia']
     },
     extend: {
+      colors: {
+        accent: 'var(--clr-accent)',
+        primary: 'var(--clr-primary)',
+        secondary: 'var(--clr-secondary)',
+        tertiary: 'var(--clr-tertiary)'
+
+      },
+      backdropBlur: {
+        xs: '2px',
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':

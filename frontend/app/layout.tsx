@@ -2,6 +2,7 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import Logo from '@/components/Logo'
 import Noise from '@/components/Noise'
+import AuthCtx from '@/components/auth/AuthCtx'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,12 +21,14 @@ export default function RootLayout({
       <head>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alice|Gloock|PT+Serif"></link>
       </head>
-      <body className={inter.className }>
+      <body className={inter.className + " overflow-scroll" }>
         <Logo />
-        <main className='absolute inset-0 bg-[#dbcdb8] dark:bg-[#303666] overflow-hidden'>
+        <AuthCtx>
+        <main className='absolute inset-0 bg-primary'>
           {children}
         </main>
-        {/* <Noise /> */}
+        </AuthCtx>
+        <Noise />
       </body>
     </html>
   )

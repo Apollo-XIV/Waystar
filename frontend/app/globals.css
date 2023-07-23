@@ -6,6 +6,10 @@
   --foreground-rgb: 64, 19, 8;
   --background-start-rgb: 219, 205, 184;
   --background-end-rgb: 201, 185, 161;
+  --clr-accent: #000000;
+  --clr-primary: #dbcdb8;
+  --clr-secondary: #ffffff;
+  --clr-tertiary: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -13,6 +17,10 @@
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
+    --clr-accent: #ebe3d5;
+    --clr-primary: #303666;
+    --clr-secondary: #171d3b;
+    --clr-tertiary: #4e5a86;
   }
 }
 
