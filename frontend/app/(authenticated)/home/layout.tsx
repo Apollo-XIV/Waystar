@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import * as React from 'react';
 import Search from '@/public/search.svg';
 import Plus from '@/public/plus.svg';
@@ -9,22 +9,12 @@ import UserBox from '@/components/auth/UserBox';
 export default function Authed({children, modal}:{children: React.ReactNode, modal: React.ReactNode}) {
 
     const pathname = usePathname();
-    const router = useRouter();
 
     return <>
     <style jsx>{`
         #selector {
             ${(pathname == "/home/timeline") ? `margin-left: 0;` : `margin-left: 50%;`}
-        }
-
-        #timeline {
-            ${(pathname == "/timeline") ? `margin-left: 0;` : `margin-left: 50%;`}
-        }
-
-        #logs {
-            ${(pathname == "/timeline") ? `margin-left: 0;` : `margin-left: 50%;`}
-        }
-    
+        }    
     `}</style>
         <header className="w-full fixed z-30 flex-row flex top-0 h-24 bg-secondary">
         <div className='m-auto mb-0 w-full sm:w-1/2 md:w-1/3'>
@@ -46,9 +36,7 @@ export default function Authed({children, modal}:{children: React.ReactNode, mod
                 <Search className="w-6  h-6"/>
             </Link>
             <UserBox />
-        </div>
-        {/* This will be the search button, both will open modals */}
-        
+        </div>        
         </header>
         <div className='h-32'></div>
         {children}

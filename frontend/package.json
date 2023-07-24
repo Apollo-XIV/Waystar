@@ -11,6 +11,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@mui/material": "^5.14.1",
     "@svgr/core": "^8.0.0",
     "@svgr/webpack": "^8.0.1",
     "@types/react": "18.2.14",
@@ -25,6 +26,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-search-autocomplete": "^8.5.2",
+    "react-select": "^5.7.4",
     "tailwindcss": "3.3.2",
     "typescript": "5.1.3"
   },

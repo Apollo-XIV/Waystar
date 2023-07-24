@@ -28,6 +28,7 @@ export default function useGBAPI() {
             const data = await response.json();
             setSearchResults((data.items) ? data.items : []);
             controllerRef.current = null;
+            return data;
         } catch (e:any) {
             setError(e);
         }
