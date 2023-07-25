@@ -1,2 +1,2 @@
-import BookSearch from './BookSearch';
-export default BookSearch;
+import Search from './BookSearchV2';
+export default Search;

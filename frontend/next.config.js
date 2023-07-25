@@ -11,6 +11,11 @@ const nextConfig = {
             test: /\.svg$/,
             use: ["@svgr/webpack"]
         });
+
+        config.watchOptions = {
+            poll: true,
+            aggregateTimeout: 500,
+        }
       
         return config;
     }      
