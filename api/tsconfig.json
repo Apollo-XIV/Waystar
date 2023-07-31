@@ -13,9 +13,14 @@
       "sourceMap": true,
       "esModuleInterop": true,
       "paths": {
+         "@middleware": ["middleware"],
+         "@middleware/*": ["middleware/*"],
+         "@entities": ["entity"],
+         "@routes": ["routes"],
+         "@repos": ["repos"],
          "@/*": ["./*"],
       },
-      "baseUrl": ".",
+      "baseUrl": "./src"
    },
    "include": ["**/*"],
 

@@ -1,5 +1,5 @@
 import {AppDataSource} from "../data-source";
-import {Book, User, Log, Entry} from "../entity";
+import {Book, User, Log, Entry} from "@entities";
 
 const BookRepo = AppDataSource.getRepository(Book);
 const UserRepo = AppDataSource.getRepository(User);

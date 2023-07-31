@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm"
 
-import { Book, Log, User } from "./";
+import { Book, Log, User } from "@entities";
 
 
 @Entity()

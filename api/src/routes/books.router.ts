@@ -1,5 +1,5 @@
 import express, {Response} from "express";
-import {AuthRequest} from "../../middleware/auth";
+import {AuthRequest} from "../middleware/auth";
 
 export const BookRouter = express.Router();
 
