@@ -21,5 +21,8 @@ export default function Layout({children, modals} : {children: React.ReactNode, 
     <div className="h-24" />
     {children}
     {modals}
+    <footer className="h-96 bg-slate-950">
+
+    </footer>
     </>
 }

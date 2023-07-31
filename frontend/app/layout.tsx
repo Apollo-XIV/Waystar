@@ -21,9 +21,9 @@ export default function RootLayout({
       <head>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alice|Gloock|PT+Serif"></link>
       </head>
-      <body className={inter.className + " overflow-scroll" }>
+      <body className={inter.className + " overflow-y-scroll overflow-x-hidden" }>
         <AuthCtx>
-        <main className='absolute inset-0 bg-primary'>
+        <main className='bg-primary'>
           {children}
         </main>
         </AuthCtx>

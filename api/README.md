@@ -1,4 +1,7 @@
-# API Server
-This server handles most of the backend business logic and the like.
+# Awesome Project Build with TypeORM
 
-- [ ] TODO: Implement build function, compile to plain js
+Steps to run this project:
+
+1. Run `npm i` command
+2. Setup database settings inside `data-source.ts` file
+3. Run `npm start` command

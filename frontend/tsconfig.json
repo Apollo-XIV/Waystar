@@ -35,7 +35,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "../cdn/static/types/**/*.ts",
-    "build/types/**/*.ts"
+    "build/types/**/*.ts",
+    "types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

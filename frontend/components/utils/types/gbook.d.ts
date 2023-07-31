@@ -36,6 +36,7 @@ export interface VolumeInfo {
     authors:             string[];
     publisher:           string;
     publishedDate:       string;
+    description?:        string;
     readingModes:        ReadingModes;
     pageCount:           number;
     printedPageCount:    number;

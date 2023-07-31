@@ -1,47 +1,61 @@
-// Required Modules //===>
-import * as dotenv from "dotenv";
-import express, {Request, Response} from "express";
+import { AppDataSource } from "./data-source"
+import { User } from "./entity/User"
+import express, {Request, Response} from "express"
+import { getToken } from "next-auth/jwt";
 import cors from "cors";
+import * as dotenv from "dotenv";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
-import { userRouter } from "./controllers/users/user.router";
-import { chirpRouter } from "./controllers/chirps/chirp.router";
-import { connect } from "./modules/db";
+import {auth, AuthRequest} from "../middleware/auth";
+import {BookRouter, UserRouter} from "./routes";
 
+//===== CONFIG ====>
 dotenv.config();
-connect();
+
+AppDataSource.initialize().then(async () => {
+    console.log("db connection initialized");
+}).catch(error => console.log(error));
+
+const secret = process.env.NEXTAUTH_SECRET as string;
 
 
-// App Variables //===>
+const corsSettings = {
+    credentials: true,
+    origin: ["http://localhost:3000", "http://localhost:3001", "http://localhost"],
+    exposedHeaders: ""
+}
 
-if (!process.env.PORT) {throw new Error("Insufficient Environment Variables: No Port Number Specified")}
 
-const PORT: number = parseInt(process.env.PORT as string, 10);
+
+
 const app = express();
 
-// Middleware //===>
-
-app.use(helmet());
-app.use(cors());
+//===== MIDDLEWARE ====>
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(cors(corsSettings));
 app.use(cookieParser());
+app.use(helmet());
+app.use(auth);
 
 
+//===== ROUTES ======>
 
-// Routes //====>
-app.use("/user", userRouter);
-app.use("/chirp", chirpRouter);
-//app.use("/api/auth", authRouter);
+app.use("/books", BookRouter);
+app.use("/users", UserRouter);
 
-app.get("/", async (req: Request, res: Response) => {
-    console.log("request received... BOUNCE");
-    res.status(200).send("bounce");
-})
 
-// Server Init //====>
-const server = app.listen(PORT, () => {
-    console.log(`Server listening on port ${PORT}`);
+app.get("/test", async (req: Request, res: Response) => {
+    const users = await AppDataSource.manager.find(User);
+    res.send(users)
 });
 
+app.get("/", async (req: AuthRequest, res: Response) => {;
+    console.log(req.token);
+    res.status(200).send("boop")
+})
+
+
+const server = app.listen(3001, () => {
+    console.log("Server Listening on Port 3001");
+})
 

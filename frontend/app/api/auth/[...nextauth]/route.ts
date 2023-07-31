@@ -1,4 +1,4 @@
-import NextAuth from "next-auth";
+import NextAuth, { CookiesOptions } from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import { config } from "dotenv";
 
@@ -21,7 +21,23 @@ const handler = NextAuth({
             clientId: process.env.GITHUB_ID,
             clientSecret: process.env.GITHUB_SECRET,
         }),
-    ]
+    ],
+    session:{
+        strategy: "jwt"
+    },
+    callbacks: {
+        async session({session, token}) {
+            session.accessToken = JSON.stringify(token);
+            return session
+        },
+        async jwt({token}) {
+            return token
+        }
+    }
 });
-
 export { handler as GET, handler as POST}
+
+
+function generateAPIKey(string: string, key: string) {
+
+}
