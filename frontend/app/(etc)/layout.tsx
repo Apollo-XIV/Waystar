@@ -1,28 +1,40 @@
 import React from "react";
-import Link from 'next/link';
-
-import Search from '@/public/search.svg';
-import Plus from '@/public/plus.svg';
-import UserBox from '@/components/auth/UserBox';
+import Navbar from '@/components/fixtures/Navbar';
+import Logo from "@/public/logo.svg";
 
 export default function Layout({children, modals} : {children: React.ReactNode, modals: React.ReactNode}) {
     return <>
-    <header className="w-full fixed top-0 z-30 flex-row flex h-24 bg-secondary">
-        <div className='absolute right-5 top-[1.5rem] flex gap-4'>
-            <Link href={"/new"} className='rounded-full flex place-items-center justify-center hover:brightness-90 transition-all bg-[#303666] h-12 w-12'>
-                <Plus className="w-6 h-6"/>
-            </Link>
-            <Link href={"/search"} className='rounded-full flex place-items-center justify-center bg-[#303666] hover:brightness-90 transition-all h-12 w-12'>
-                <Search className="w-6  h-6"/>
-            </Link>
-            <UserBox />
-        </div>        
-    </header>
+    <Navbar />
     <div className="h-24" />
-    {children}
+    <main className="overscroll-none" style={{ minHeight: "calc(100vh - 30rem)" }} >
+        {children}
+    </main>
     {modals}
-    <footer className="h-96 bg-slate-950">
-
-    </footer>
+    <footer className="footer p-10 bg-base-200 text-base-content">
+        <div>
+            <Logo  className="w-40 h-24" />
+            <p><span className="font-bold italic">Waystar</span><br/>The Online Book Club</p>
+        </div> 
+        <div>
+            <span className="footer-title">Services</span> 
+            <a className="link link-hover">Branding</a> 
+            <a className="link link-hover">Design</a> 
+            <a className="link link-hover">Marketing</a> 
+            <a className="link link-hover">Advertisement</a>
+        </div> 
+        <div>
+            <span className="footer-title">Company</span> 
+            <a className="link link-hover">About us</a> 
+            <a className="link link-hover">Contact</a> 
+            <a className="link link-hover">Jobs</a> 
+            <a className="link link-hover">Press kit</a>
+        </div> 
+        <div>
+            <span className="footer-title">Legal</span> 
+            <a className="link link-hover">Terms of use</a> 
+            <a className="link link-hover">Privacy policy</a> 
+            <a className="link link-hover">Cookie policy</a>
+        </div>
+</footer>
     </>
 }

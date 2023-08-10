@@ -16,6 +16,7 @@
          "@middleware": ["middleware"],
          "@middleware/*": ["middleware/*"],
          "@entities": ["entity"],
+         "@entities/*": ["entity/*"],
          "@routes": ["routes"],
          "@repos": ["repos"],
          "@/*": ["./*"],

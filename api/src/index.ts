@@ -5,7 +5,7 @@ import * as dotenv from "dotenv";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import {auth, AuthRequest} from "@middleware/auth";
-import {BookRouter, UserRouter} from "@routes";
+import {BookRouter, UserRouter, LogRouter, EntryRouter} from "@routes";
 
 //===== CONFIG ====>
 dotenv.config();
@@ -39,6 +39,15 @@ app.use(auth);
 
 app.use("/books", BookRouter);
 app.use("/users", UserRouter);
+app.use("/logs", LogRouter);
+app.use("/entries", EntryRouter);
+
+app.post("/ping=:message", async (req: AuthRequest, res: Response) => {
+    console.log(req.params.message);
+    console.log(req.body);
+    res.send("done");
+});
+
 
 app.get("/", async (req: AuthRequest, res: Response) => {;
     console.log(req.token);

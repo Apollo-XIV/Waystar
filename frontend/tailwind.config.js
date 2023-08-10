@@ -8,7 +8,9 @@ module.exports = {
   theme: {
     fontFamily: {
       'serif': ['PT Serif', 'ui-serif','Georgia'],
-      'display': ['Alice', 'Times New Roman', 'Georgia']
+      'display': ['Alice', 'Times New Roman', 'Georgia'],
+      'sans': ['Lato', 'Inter', 'Arial'],
+      'heading':['Gloock','Alice','Times New Roman']
     },
     extend: {
       colors: {

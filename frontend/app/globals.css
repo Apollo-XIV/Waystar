@@ -8,8 +8,8 @@
   --background-end-rgb: 201, 185, 161;
   --clr-accent: #000000;
   --clr-primary: #dbcdb8;
-  --clr-secondary: #ffffff;
-  --clr-tertiary: #ffffff;
+  --clr-secondary: #151111;
+  --clr-tertiary: #dedbcb;
 }
 
 @media (prefers-color-scheme: dark) {

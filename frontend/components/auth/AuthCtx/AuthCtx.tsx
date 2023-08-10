@@ -5,9 +5,9 @@ import React from "react";
 
 type Props = {
     children: React.ReactNode,
-    context?: Session
+    session?: Session
 }
 
-export default function AuthCtx({children, context}: Props) {
-    return <><SessionProvider session={context}>{children}</SessionProvider></>
+export default function AuthCtx({children, session}: Props) {
+    return <><SessionProvider session={session}>{children}</SessionProvider></>
 }

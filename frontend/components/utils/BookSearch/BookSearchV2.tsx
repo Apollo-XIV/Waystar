@@ -31,7 +31,7 @@ function BookResultSection({ items } : { items: GBook[] }) {
         {(items.length >= 1) && <>
             
             {items.map((item: GBook, index) => <>
-                <BookResult key={index} item={item} />
+                <BookResult key={item.id} item={item} />
             </>)}
         
         </>}

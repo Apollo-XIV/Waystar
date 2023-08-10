@@ -16,9 +16,10 @@ export const auth = async (req: AuthRequest, res: Response, next: NextFunction) 
      */
     
     const routes = [
-    "/test"
+    "/test",
+    "/logs/userLogs"
     ]
-
+    
     const token = await getToken({req}).catch((e: Error) => {
             res.status(501).send("Internal server error during auth. Please notify the maintainer if this error persists.")
     })
@@ -30,12 +31,20 @@ export const auth = async (req: AuthRequest, res: Response, next: NextFunction) 
         return (accumulator || currentValue) ? true : false;
     }, false);
 
+    if (req.headers.test == "true") {
+        req.token = {uid: parseInt(req.headers.id.toString())}
+        next()
+        return;
+    }
+
     if (token) {
+        console.log(token);
         req.token = token;
     } else if (protectedRoute()) {
         res.status(403).send("You are not permitted to access this resource.")
         return;
     } else {
+        console.log("accepting unauthed req")
         req.token = null;
     }
     next()

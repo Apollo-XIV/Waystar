@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from "typeorm"
-import { Book, Entry, User } from "@entities";
+import { Book, Entry, User } from "@/modules/entities";
 import { createHash } from "crypto";
 
 @Entity()
@@ -21,11 +21,11 @@ export class Log {
     })
     book: Book
 
-    @OneToMany(() => Entry, (entry) => entry.log)
+    @OneToMany(() => Entry, (entry: Entry) => entry.log)
     entries: Entry[]
 
     @Column()
-    gid: string;
+    gid: string
 
 }
 

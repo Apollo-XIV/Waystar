@@ -2,7 +2,6 @@
 import {useSession, signIn, signOut} from "next-auth/react";
 import Avatar from "../Avatar";
 import Google from "@/public/google.svg";
-import { sign } from "crypto";
 
 type Props = {
     format?: String
@@ -21,8 +20,9 @@ export default function UserBox() {
             </label> {/* This is where i can put all the logic for loading, can be offloaded into component contents perhaps*/}
             {(status === "authenticated") && <>
             <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-tertiary rounded-box w-52 mt-4">
-                <li><a>Item 1</a></li>
-                <li onClick={() => {signOut}}><a>Sign Out</a></li>
+                <li><a>Profile</a></li>
+                <li><a>Settings</a></li>
+                <li className="text-red-500" onClick={() => {signOut()}}><a>Sign Out</a></li>
             </ul>
             </>}
         </div>

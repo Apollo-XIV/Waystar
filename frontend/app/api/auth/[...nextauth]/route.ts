@@ -26,12 +26,31 @@ const handler = NextAuth({
         strategy: "jwt"
     },
     callbacks: {
-        async session({session, token}) {
-            session.accessToken = JSON.stringify(token);
+        async session({session}) {
             return session
         },
-        async jwt({token}) {
+        async jwt({token, account}) {
+            if (account) {
+                token.uid = account.providerAccountId;
+            }
             return token
+        }
+    },
+    events: {
+        async signIn({isNewUser, profile}) {
+            // if (!isNewUser) {return};
+            fetch(`http://localhost:3001/users/new`, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    profile
+                })
+            })
+                .catch((e: any) => {
+                    console.log(e);
+                })
         }
     }
 });
