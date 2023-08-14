@@ -9,7 +9,7 @@ export default function Home() {
     return <>
     <style>{`
         .level {
-            --scaleMod: calc(var(--depth)*-0.1 + 1);
+            --scaleMod: calc(var(--depth)*-0.4 + 1);
             --translateMod: calc(var(--depth) * 1px);
             transform: translateZ(var(--translateMod)) scale(var(--scaleMod));
             background-size: 100%;
@@ -18,13 +18,16 @@ export default function Home() {
 
     `}
     </style>
+    <div className="absolute inset-0 flex flex-col place-items-center">
+
     <div style={{
-        perspective: "5px"
-    }} id="mountains" className="absolute z-10 flex place-items-center justify-center top-0 h-screen w-screen">
+        perspective: "500px"
+    }} id="mountains" className="absolute z-10 flex place-items-center justify-center top-0 h-screen w-[2000px] transform">
         <Orb className="h-1/2" />
-        <Background style={{"--depth": "-2"}} className="level absolute bottom-0 min-w-full min-h-[50vh]" />
-        <Midground style={{"--depth": "-1"}} className="level absolute bottom-0 min-w-full min-h-[50vh]" />
+        <Background style={{"--depth": "-20"}} className="level absolute bottom-0 min-w-full min-h-[50vh]" />
+        <Midground style={{"--depth": "-10"}} className="level absolute bottom-0 min-w-full min-h-[50vh]" />
         <Foreground style={{"--depth": "0"}} className="level absolute bottom-0 min-w-full min-h-[50vh] " />
+    </div>
     </div>
     <section className="flex z-20 absolute inset-0 px-8 md:px-28 flex-col justify-end py-24 sm:justify-center">
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display w-full">Uncover Shared Stories.<br/>Connect Through the Pages.</h1>

@@ -14,7 +14,7 @@ export default function Navbar() {
         <Logo className="absolute left-8 h-24 w-24" />
         <nav>
         <div className="tabs">
-            <Link href={"/timeline"} className={`tab tab-bordered ${(path.startsWith("/timeline")) ? "tab-active" : ""}`}>Timeline</Link> 
+            <Link prefetch={false} href={"/timeline"} className={`tab tab-bordered ${(path.startsWith("/timeline")) ? "tab-active" : ""}`}>Timeline</Link> 
             <Link href={"/logs"} className={`tab tab-bordered ${(path.startsWith("/logs")) ? "tab-active" : ""}`}>Logs</Link>
             <Link href={"/discover"} className={`tab tab-bordered ${(path.startsWith("/discover")) ? "tab-active" : ""}`}>Discover</Link>
         </div>

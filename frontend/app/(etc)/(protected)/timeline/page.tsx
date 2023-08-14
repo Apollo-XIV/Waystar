@@ -8,7 +8,7 @@ export default async function Page() {
 
     return <>
     <div className="flex justify-center place-items-center">
-        <div className="relative w-full h-full pt-64 pb-64 max-w-prose flex flex-col gap-5 z-[1]
+        <div className="relative w-full h-full py-8 max-w-prose flex flex-col gap-5 z-[1]
                         before:left-0 before:top-0 before:bottom-0 before:absolute before:w-32
                         before:border-dashed before:border-white before:border-r-2 before:z-[-1]
         ">

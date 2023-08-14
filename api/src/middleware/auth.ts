@@ -17,7 +17,8 @@ export const auth = async (req: AuthRequest, res: Response, next: NextFunction) 
     
     const routes = [
     "/test",
-    "/logs/userLogs"
+    "/logs/userLogs",
+    "/logs/new"
     ]
     
     const token = await getToken({req}).catch((e: Error) => {
@@ -32,7 +33,8 @@ export const auth = async (req: AuthRequest, res: Response, next: NextFunction) 
     }, false);
 
     if (req.headers.test == "true") {
-        req.token = {uid: parseInt(req.headers.id.toString())}
+        console.log("received api test call")
+        req.token = {id: parseInt(req.headers.id.toString())}
         next()
         return;
     }
@@ -41,7 +43,8 @@ export const auth = async (req: AuthRequest, res: Response, next: NextFunction) 
         console.log(token);
         req.token = token;
     } else if (protectedRoute()) {
-        res.status(403).send("You are not permitted to access this resource.")
+        res.status(403).send("You are not permitted to access this resource.");
+        console.log("denied unauthed request");
         return;
     } else {
         console.log("accepting unauthed req")

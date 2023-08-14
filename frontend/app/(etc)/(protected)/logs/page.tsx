@@ -7,9 +7,9 @@ export default async function Logs() {
 
     return <>
     <div className='flex justify-center px-2'>
-    <div className='mt-10 w-full md:w-2/3 lg:w-1/2'>
-        <h1 className='text-3xl pl-5 font-display'>All</h1>
-        <div className='divider h-0'></div>
+    <div className='mt-10 max-w-6xl'>
+        <h1 className='text-3xl pl-5 font-display w-screen'>All</h1>
+        <div className='divider h-0 max-w-6xl'></div>
         <div className='px-5 flex gap-2 flex-wrap'>
             {(logs) && logs.map((log) => <div key={log.book.title}>
                 <LogGroup  log={log} />

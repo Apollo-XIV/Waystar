@@ -1,9 +1,11 @@
-import {Log} from '@/modules/entities';
+import {Log, Entry} from '@/modules/entities';
 import Link from 'next/link';
 
 
 export default function LogGroup(log: Log) {
     log = log.log
+    const entries: Entry[] = log.entries
+    console.log(entries.length)
     return <>
     <Link href={"/logs/"+log.id} className="bg-accent cursor-pointer hover:scale-105 transition-all h-64 w-48 p-2 rounded-md flex-col flex">
         <div className="bg-secondary  relative w-full h-full overflow-hidden rounded-sm">
@@ -15,8 +17,8 @@ export default function LogGroup(log: Log) {
         </div>
         <p className="mx-2 mt-1 text-black text-lg leading-5 font-bold">{log.book.title}</p>
         <div className="px-2 flex">
-            <span className="text-black text-xs leading-0">{log.index*100}%</span>
-            <span className="text-black ml-auto text-xs leading-0">12 Posts</span>
+            <span className="text-black text-xs leading-0">pg.{log.index}</span>
+            <span className="text-black ml-auto text-xs leading-0">{(log.entries.length == 1) ? log.entries.length + " Entry": log.entries.length + " Entries"}</span>
         </div>
     </Link> 
 </>}

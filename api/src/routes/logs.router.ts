@@ -54,7 +54,7 @@ LogRouter.get("/readers=:bid", async (req: AuthRequest, res: Response) => {
 // Create new user by JSON Body
 LogRouter.post("/new", async (req: AuthRequest, res: Response) => {
     // get user from db
-    const user = await UserRepo.findOne({where: {id: (req.token.uid as number)}});
+    const user = await UserRepo.findOne({where: {id: (req.token.id as number)}});
     console.log(req.body);
     const bookInfo = req.body.book;
     const bid = generateBID(bookInfo.title, bookInfo.authors)
@@ -94,6 +94,7 @@ LogRouter.get("/userLogs", async (req: AuthRequest, res: Response) => {
         relations: {
             book: true,
             user: true,
+            entries: true
         },
         where: {
             user: {

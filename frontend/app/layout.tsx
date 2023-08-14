@@ -29,7 +29,7 @@ export default async function RootLayout({
       </head>
       <body className={inter.className + " " + "overscroll-none overflow-y-scroll overflow-x-hidden" }>
         <AuthCtx session={session}>
-        <main className='bg-primary'>
+        <main className='bg-primary absolute inset-0 overscroll-none overflow-y-scroll overflow-x-hidden'>
           {children}
         </main>
         </AuthCtx>
