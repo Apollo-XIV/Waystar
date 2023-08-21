@@ -21,10 +21,10 @@ jobs:
       uses: hashicorp/setup-terraform@v2
 
     - name: Terraform init
-      run: terraform init
+      run:  cd/infrastructure/terraform && terraform init
 
     - name: Terraform plan
-      run: pwd && terraform plan -out=terraform.tfplan
+      run: cd /infrastructure/terraform && terraform plan -out=terraform.tfplan
 
     - name: Commit Plan for Approval
       if: github.ref == 'refs/heads/main'
