@@ -1,5 +1,7 @@
+import Image from "next/image";
+
 export default function Icon({src, className}:{src: string, className?: string}) {
     return <>
-        <img className={className} src={src}/>
+        <Image alt="Icon" className={className} src={src}/>
     </>
 }

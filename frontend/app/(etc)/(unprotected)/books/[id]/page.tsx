@@ -1,9 +1,10 @@
 import { GBook } from "@/components/utils/types";
 import parse from "html-react-parser";
 import { notFound } from "next/navigation";
-import {BookButtons} from "@/components/Button";
+import { BookButtons } from "@/components/Button";
 import { callAPI } from "@/modules/api";
 import { createHash } from "crypto";
+import Image from "next/image";
 
 export default async function Book({params} : {params: {id: string}}) {
     const book: GBook | undefined = await getData(params.id);
@@ -24,7 +25,7 @@ export default async function Book({params} : {params: {id: string}}) {
                 </div>
                 <div className="relative flex gap-4 px-6 pb-10 lg:w-2/3">
                     <BookButtons book={book} className="absolute right-0 top-0" />
-                    <img className="hover:scale-105 transition all rounded-md drop-shadow-xl w-64 relative z-50" src={(book.volumeInfo.imageLinks) ? `https://books.google.com/books/publisher/content/images/frontcover/${book.id}?fife=w400-h600&source=gbs_api` : ""} /> {/** TODO: Make image shrink on scroll down */}
+                    <Image alt="book cover" className="hover:scale-105 transition all rounded-md drop-shadow-xl w-64 relative z-50" src={(book.volumeInfo.imageLinks) ? `https://books.google.com/books/publisher/content/images/frontcover/${book.id}?fife=w400-h600&source=gbs_api` : ""} /> {/** TODO: Make image shrink on scroll down */}
                     <div className="flex flex-col justify-end">
                         <p className="text-lg text-white font-sans italic">{book.volumeInfo.authors}</p>
                         <h1 className="text-6xl text-white font-black">{book.volumeInfo.title}</h1>

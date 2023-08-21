@@ -4,7 +4,7 @@
          "es5",
          "es6"
       ],
-      "target": "es5",
+      "target": "es2016",
       "module": "commonjs",
       "moduleResolution": "node",
       "outDir": "./build",
@@ -12,6 +12,7 @@
       "experimentalDecorators": true,
       "sourceMap": true,
       "esModuleInterop": true,
+      "skipLibCheck": true,
       "paths": {
          "@middleware": ["middleware"],
          "@middleware/*": ["middleware/*"],
@@ -24,5 +25,6 @@
       "baseUrl": "./src"
    },
    "include": ["**/*"],
+   "exclude": ["node_modules"]
 
 }

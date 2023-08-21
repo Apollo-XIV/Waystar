@@ -1,26 +1,18 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm"
 
-import { Book, Log, User } from "@entities";
+import { Book, Log, User } from "../entity";
 
 
-@Entity()
-export class Entry {
+export interface Entry {
 
-    @PrimaryGeneratedColumn()
     id: number
 
-    @ManyToOne(() => Log, (log) => log.entries, {
-        cascade: true
-    })
     log: Log
 
-    @Column()
     title: string
 
-    @Column()
     content: string
 
-    @Column()
     index: number // this measures how far through the book the entry is
 
 }

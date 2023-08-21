@@ -28,6 +28,8 @@ coverage
 # Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
 
+.terraform
+
 # Bower dependency directory (https://bower.io/)
 bower_components
 
@@ -131,3 +133,4 @@ dist
 cdn/static
 api/build
 secrets.yml
+infrastructure/terraform/.terraform/providers/registry.terraform.io/hashicorp/aws/4.67.0/linux_amd64/terraform-provider-aws_v4.67.0_x5

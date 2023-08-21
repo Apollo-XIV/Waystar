@@ -1,8 +1,8 @@
-import {Log, Entry} from '@/modules/entities';
+import {Log, Entry} from '@/modules/entity';
 import Link from 'next/link';
 
 
-export default function LogGroup(log: Log) {
+export default function LogGroup(log: any) {
     log = log.log
     const entries: Entry[] = log.entries
     console.log(entries.length)

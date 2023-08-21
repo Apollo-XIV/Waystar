@@ -1,30 +1,19 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from "typeorm"
-import { Book, Entry, User } from "@/modules/entities";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from "typeorm";
+import { Book, Entry, User } from "../entity";
 import { createHash } from "crypto";
 
-@Entity()
-export class Log {
+export interface Log {
 
-    @PrimaryGeneratedColumn()
     id: number
 
-    @Column()
     index: number
 
-    @ManyToOne(() => User, (user) => user.logs, {
-        cascade: true
-    })
     user: User
 
-    @ManyToOne(() => Book, {
-        cascade: true
-    })
     book: Book
 
-    @OneToMany(() => Entry, (entry: Entry) => entry.log)
     entries: Entry[]
 
-    @Column()
     gid: string
 
 }

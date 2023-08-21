@@ -1,5 +1,6 @@
 'use client';
 import { usePathname } from 'next/navigation';
+import Image from "next/image";
 
 export default function Logo() {
     const pathname = usePathname();
@@ -7,7 +8,7 @@ export default function Logo() {
 
     return <>
     <style jsx>{`
-        img {
+        #Image {
             ${(pathname == "/") ? `width: 12rem;` : `position: fixed; width: 7rem; left: 20px; z-index: 40; top: 1rem;`}
         }
 
@@ -17,7 +18,7 @@ export default function Logo() {
 
     `}</style>
     <div className="fixed z-10 flex justify-center top-12 pointer-events-none w-full">
-        <img className="w-48 hover:scale-105 pointer-events-auto transition-all" src="/logo.svg"/>
+        <Image alt="logo" id="Image" className="w-48 hover:scale-105 pointer-events-auto transition-all" src="/logo.svg"/>
     </div>
     </>
 }

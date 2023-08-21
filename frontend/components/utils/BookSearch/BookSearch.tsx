@@ -1,84 +1,51 @@
-'use client';
-import { ReactSearchAutocomplete } from 'react-search-autocomplete';
 import useGBAPI from '@/hooks/useGBAPI';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-
+import {GBook} from '@/components/utils/types'
+import Link from "next/link";
 
 export default function Search() {
 
-    const router = useRouter();
-
     const {searchResults, search} = useGBAPI();
 
-    const handleChange = async (string: string, results: Item[]) => {
-        search(string);
-        console.log(string)
-    }
-
-    const handleSelect = (result: Item) => {
-        router.push(`/${result.id}`)
-        console.log(result);
-    }
-
-    const formatResult = (item: Item) => {
-        return <>
-        <Link href={`/books/${item.id}`} className='flex gap-4 rounded-none'>
-        <img className='h-10 rounded-none' src={item.thumbnail} />
-        <div key={item.id} className=''>
-            <p >{item.title}</p>
-            {(item.authors) ? <p className='text-sm'>{item.authors.toString()}</p> : <></> }
-        </div>
-        </Link>
-        </>
+    const handleChange = async (e: any) => {
+        if (!e.target.value) return;
+        search(e.target.value);
     }
 
     return <>
-        <ReactSearchAutocomplete<Item>
-            styling={{
-                backgroundColor: "var(--clr-secondary)",
-                hoverBackgroundColor: "var(--clr-primary)",
-                border: "1px solid var(--clr-tertiary)",
-                borderRadius: "10px",
-                color: "white",
-                width: "100%",
-                height: "3rem"
+        <div className='w-full max-h-[36vh] border-accent rounded-xl'>
 
-            }}
-            className='w-full rounded-lg'
-            placeholder="Search Books, Authors, & Users..."
-            onSearch={handleChange}
-            onSelect={handleSelect}
-            autoFocus={true}
-            showClear={false}
-            items={searchResults.map((result, index) => {
-                try {
-
-                    return {id: index,
-                        title: result.volumeInfo.title,
-                        authors: result.volumeInfo.authors,
-                        thumbnail: result.volumeInfo.imageLinks.smallThumbnail
-                    }
-                } catch (e: any) {
-                    console.log("eh");
-                    return {
-                        id: index,
-                        title: "",
-                        authors:[""],
-                        thumbnail: "",
-                    }
-                }})
-            }
-            fuseOptions={{keys: ["title","authors"]}}
-            formatResult={formatResult}
-            showIcon={false}
-            />
+            <input type="text"
+                className='w-full h-12 input input-bordered bg-secondary'
+                placeholder='Search All...'
+                onChange={handleChange}
+                />
+            <div className='max-h-full overscroll-none rounded-b-xl overflow-y-auto no-scrollbar'>
+                <BookResultSection items={searchResults} />
+            </div>
+        </div>
     </>
 }
 
-type Item = {
-    id: number,
-    title: string,
-    authors: string[],
-    thumbnail: string,
+function BookResultSection({ items } : { items: GBook[] }) {
+    return <>
+        {(items.length >= 1) && <>
+            
+            {items.map((item: GBook, index) => <>
+                <BookResult key={item.id} item={item} />
+            </>)}
+        
+        </>}
+    </>
+}
+
+function BookResult({ item }: { item:GBook }) {
+    return <>
+        <Link href={`/books/${item.id}`} className='p-2 w-full flex gap-4 bg-secondary hover:bg-primary rounded-none'>
+            {(item.volumeInfo.imageLinks) && <img className='h-10 rounded-none' src={item.volumeInfo.imageLinks.thumbnail} /> }
+            <div key={item.id} className=''>
+                <p >{item.volumeInfo.title}</p>
+                {(item.volumeInfo.authors) ? <p className='text-sm'>{item.volumeInfo.authors.toString()}</p> : <></> }
+            </div>
+        </Link>
+    </>
 }

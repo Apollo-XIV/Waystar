@@ -43,4 +43,4 @@ jobs:
     - name: Build the Docker image
       run: docker compose -f ./api/docker/production/docker-compose.yml build
     - name: Push to GHCR.io
-      run: docker push ghcr.io/apollo-xiv/k8s-api:latest
+      run: docker push ghcr.io/apollo-xiv/waystar-api:latest

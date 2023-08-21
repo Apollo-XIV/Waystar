@@ -9,8 +9,8 @@ const session: Session = {
         email: "Not a real Email",
         image: "not a real image"
     },
-    expires: (new Date('05 October 2011 14:48 UTC')).toISOString()
-
+    expires: (new Date('05 October 2011 14:48 UTC')).toISOString(),
+    accessToken: ""
 }
 
 const meta: Meta<typeof UserBox> = {

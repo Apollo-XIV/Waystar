@@ -1,2 +1,2 @@
-import BookButtons from './BookButtons.tsx';
+import BookButtons from './BookButtons';
 export {BookButtons};

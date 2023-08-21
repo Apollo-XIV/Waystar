@@ -1,20 +1,15 @@
 import { Entity, PrimaryColumn, Column, OneToMany } from "typeorm"
-import { Entry, Log, User } from "@entities";
+import { Entry, Log, User } from "@/modules/entity";
 
 
-@Entity()
-export class Book {
+export interface Book {
 
-    @PrimaryColumn()
     bid: string
 
-    @Column()
     title: string
 
-    @Column("text", {array: true})
     authors: string[]
 
-    @OneToMany(() => Log, (log) => log.book)
     logs: Log[]
 }
 

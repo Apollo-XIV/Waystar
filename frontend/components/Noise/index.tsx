@@ -1,2 +1,2 @@
-import Noise from './Noise.tsx';
+import Noise from './Noise';
 export default Noise;

@@ -26,4 +26,4 @@ jobs:
       - name: Build the Docker image
         run: cd cdn && docker compose -f ./docker-compose.yml build
       - name: Push to GHCR.io
-        run: docker push ghcr.io/apollo-xiv/k8s-cdn:latest
+        run: docker push ghcr.io/apollo-xiv/waystar-cdn:latest
