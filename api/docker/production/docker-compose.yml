@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  k8s-frontend:
+    build:
+      context: ../../
+      dockerfile: docker/production/Dockerfile
+    image: ghcr.io/apollo-xiv/waystar-api:latest
