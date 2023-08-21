@@ -24,7 +24,7 @@ jobs:
       run: terraform init
 
     - name: Terraform plan
-      run: terraform plan -out=terraform.tfplan
+      run: pwd && terraform plan -out=terraform.tfplan
 
     - name: Commit Plan for Approval
       if: github.ref == 'refs/heads/main'
