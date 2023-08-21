@@ -4,9 +4,37 @@ on:
   workflow_call:
 
 jobs:
-  test:
-    name: test
+  deploy-changes:
+    name: deploy changes
     runs-on: ubuntu-latest
 
     steps:
-    - run: echo "test"
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - run: cd infrastructure/terraform
+    
+    - name: Sign into AWS
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+        aws-region: eu-north-1
+    
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v2
+
+    - name: Terraform init
+      run: terraform init
+
+    - name: Terraform plan
+      run: terrafrom plan -out:terraform.tfplan
+
+    - name: Commit Plan for Approval
+      if: github.ref == 'refs/heads/main'
+      uses: peter-evans/create-pull-request@v4
+      with:
+        commit-message: 'Terraform Plan'
+        branch: 'Terraform-Plan'
+        base: 'main'
+        token: ${{ secrets.GITHUB_TOKEN }}
