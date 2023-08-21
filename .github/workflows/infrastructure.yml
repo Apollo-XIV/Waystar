@@ -14,12 +14,8 @@ jobs:
 
     - run: cd infrastructure/terraform
     
-    - name: Sign into AWS
-      uses: aws-actions/configure-aws-credentials@v2
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
-        aws-region: eu-north-1
+    - name: create tfvars
+      run: echo ${{ secrets.tfvars }} >> terraform.tfvars
     
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v2
