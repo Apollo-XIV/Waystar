@@ -15,7 +15,7 @@ jobs:
     - run: cd infrastructure/terraform
     
     - name: create tfvars
-      run: echo ${{ secrets.tfvars }} >> terraform.tfvars
+      run: echo ${{ secrets.tfvars }} >> infrastructure/terraform/terraform.tfvars
     
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v2
