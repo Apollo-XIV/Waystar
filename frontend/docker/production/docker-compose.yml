@@ -5,4 +5,4 @@ services:
     build:
       context: ../../
       dockerfile: docker/production/Dockerfile
-    image: ghcr.io/apollo-xiv/k8s-frontend
+    image: ghcr.io/apollo-xiv/waystar-frontend

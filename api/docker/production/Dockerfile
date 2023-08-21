@@ -7,7 +7,7 @@ RUN npm i --omit=dev
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 express
 USER express
-ENV PORT 3000
-EXPOSE 3000
+ENV PORT 3001
+EXPOSE 3001
 
 CMD ["node", "index.js"]
