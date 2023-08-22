@@ -12,11 +12,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     
-    - name: create tfvars 1
-      run: cd infrastructure/terraform && echo 'aws_access_key = "${{ secrets.AWS_ACCESS_KEY }}"' >> terraform.tfvars
-    
-    - name: create tfvars 2
-      run: cd infrastructure/terraform && echo 'aws_secret_key = "${{ secrets.AWS_SECRET_KEY }}"' >> terraform.tfvars
+    - name: create tfvars
+      run: cd infrastructure/terraform && echo '${{ secrets.TFVARS }}' >> terraform.tfvars
     
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v2
