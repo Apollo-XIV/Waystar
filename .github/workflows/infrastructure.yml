@@ -21,8 +21,8 @@ jobs:
     - name: Terraform init
       run:  cd infrastructure/terraform && terraform init
 
-    - name: Terraform plan
-      run: cd infrastructure/terraform && terraform plan -out=terraform.tfplan
+    - name: Terraform apply
+      run: cd infrastructure/terraform && terraform apply -auto-approve -out=terraform.tfplan
 
     - name: Commit Plan for Approval
       if: github.ref == 'refs/heads/main'
