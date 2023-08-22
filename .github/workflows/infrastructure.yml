@@ -15,14 +15,10 @@ jobs:
     - name: create tfvars
       run: cd infrastructure/terraform && echo '${{ secrets.TFVARS }}' >> terraform.tfvars
     
-    - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v2
-
-    - name: Terraform init
-      run:  cd infrastructure/terraform && terraform init
-
-    - name: Terraform apply
-      run: cd infrastructure/terraform && terraform apply -auto-approve
+    - name: Terraform Apply
+      uses: sturlabragason/terraform_state_artifact@v1
+      with:
+        encryptionkey: ${{ secrets.TF_STATE_SECRET }}
     
     # - name: Preserve State
     #   uses: 
