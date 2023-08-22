@@ -9,11 +9,12 @@ permissions: write-all
 
 jobs:
 
-
+  
   check-infrastructure-config:
     # terraform
     name: Check Infrastructure Configuration
     uses: ./.github/workflows/infrastructure.yml
+    secrets: inherit
   
   changes:
     name: Check changes in pull request
