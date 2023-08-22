@@ -13,7 +13,7 @@ jobs:
       uses: actions/checkout@v3
     
     - name: create tfvars
-      run: cd infrastructure/terraform && echo "${{ vars.TEST }}" >> terraform.tfvars
+      run: cd infrastructure/terraform && echo '${{ vars.TEST }}' >> terraform.tfvars
     
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v2
