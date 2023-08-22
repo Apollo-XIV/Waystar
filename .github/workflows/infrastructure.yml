@@ -23,12 +23,15 @@ jobs:
 
     - name: Terraform apply
       run: cd infrastructure/terraform && terraform apply -auto-approve
+    
+    # - name: Preserve State
+    #   uses: 
 
-    - name: Commit Plan for Approval
-      if: github.ref == 'refs/heads/main'
-      uses: peter-evans/create-pull-request@v4
+    - name: Download kubectl
+      run: aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw cluster_name)
+
+    - name: Persist Kubectl
+      uses: actions/upload-artifact@v3
       with:
-        commit-message: 'Terraform Plan'
-        branch: 'Terraform-Plan'
-        base: 'main'
-        token: ${{ secrets.GITHUB_TOKEN }}
+        name: kubeconfig
+        path: ~/.kube/config
