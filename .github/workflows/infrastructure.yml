@@ -21,9 +21,6 @@ jobs:
     - name: Terraform init
       run:  cd infrastructure/terraform && terraform init
 
-    - name: test
-      run: cat infrastructure/terraform/terraform.tfvars
-
     - name: Terraform plan
       run: cd infrastructure/terraform && terraform plan -out=terraform.tfplan
 
