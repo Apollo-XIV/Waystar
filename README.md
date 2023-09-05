@@ -103,13 +103,5 @@
 ![logo](https://github.com/Apollo-XIV/Waystar/assets/119538960/67468a10-3b05-4e6d-8a10-ef518abcac51)
 # Uncover Shared Stories, Connect Through the Pages
 Waystar is a social media platform designed for bookworms and communities thereof. With waystar you can track your progress through books, leaving notes in the form of logs so that your friends and others can discover them as they catch up.
-Your personal timeline is tailored to fit exactly with where you are in your favourite books, ensuring you never get a spoiler or reveal you weren't ready for.
 
-## Technologies in use:
-- Next.js 13
-- React
-- Kubernetes
-- Express
-- MongoDB
-- Storybook
-- Tailwind
+Your personal timeline is tailored to fit exactly with where you are in your favourite books, ensuring you never get a spoiler or reveal you weren't ready for. Along with this, keep track of what your friends are reading and enjoy social features designed to encourage you to engage with one another about shared interests.

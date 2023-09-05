@@ -10,6 +10,11 @@
   --clr-primary: #dbcdb8;
   --clr-secondary: #151111;
   --clr-tertiary: #dedbcb;
+
+  --scene-foreground: #B18765;
+  --scene-midground: #C89F7D;
+  --scene-background: #D1A987;
+  
 }
 
 @media (prefers-color-scheme: dark) {
@@ -21,6 +26,11 @@
     --clr-primary: #303666;
     --clr-secondary: #171d3b;
     --clr-tertiary: #4e5a86;
+
+    --scene-foreground: #323858;
+    --scene-midground: #222749;
+    --scene-background: #171d3b;
+
   }
 }
 

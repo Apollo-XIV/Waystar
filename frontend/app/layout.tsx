@@ -27,9 +27,9 @@ export default async function RootLayout({
       <head>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alice|Gloock|PT+Serif|Lato"></link>
       </head>
-      <body className={inter.className + " " + "overscroll-none overflow-y-scroll overflow-x-hidden" }>
+      <body className={inter.className + " " + "overscroll-none overflow-hidden overflow-x-hidden" }>
         <AuthCtx session={session}>
-        <main className='bg-primary absolute inset-0 overscroll-none overflow-y-scroll overflow-x-hidden'>
+        <main className='bg-primary absolute inset-0 overscroll-none overflow-y-auto overflow-x-hidden'>
           {children}
         </main>
         </AuthCtx>

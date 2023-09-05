@@ -1,5 +1,5 @@
 <svg viewBox="0 0 1440 508" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <path d="M166 199.5L-4 66.5V508H1440.5V0.5L1388 7.5L1298.5 49.5L1106.5 38C1040.33 75 907.1 149.7 903.5 152.5C899.9 155.3 723.667 191.667 636 209.5L536.5 135.5L366 174L166 199.5Z" fill="#D1A987"/>
+  <path d="M166 199.5L-4 66.5V508H1440.5V0.5L1388 7.5L1298.5 49.5L1106.5 38C1040.33 75 907.1 149.7 903.5 152.5C899.9 155.3 723.667 191.667 636 209.5L536.5 135.5L366 174L166 199.5Z" fill="var(--scene-background)"/>
   <path d="M166 199.5L-4 66.5V508H1440.5V0.5L1388 7.5L1298.5 49.5L1106.5 38C1040.33 75 907.1 149.7 903.5 152.5C899.9 155.3 723.667 191.667 636 209.5L536.5 135.5L366 174L166 199.5Z" fill="url(#pattern0)" fill-opacity="0.6"/>
   <defs>
     <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1.41779" height="4.03547">
