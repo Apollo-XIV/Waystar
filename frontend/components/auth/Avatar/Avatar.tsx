@@ -18,7 +18,7 @@ export default function Avatar() {
     return (<>
         <div className="avatar">
             <div className="w-12 rounded-full">
-        {(status === "authenticated") && <Image alt="Avatar" src={session.user?.image} />}
+        {(status === "authenticated") && <Image alt="Avatar" width={100} height={100} src={session.user?.image} />}
             </div>
         </div>
         

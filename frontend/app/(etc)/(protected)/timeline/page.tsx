@@ -29,7 +29,7 @@ function EntryBox({entry}:{entry: Partial<Entry>}) {
 
 
     return <>
-    <div className="w-full bg-tertiary rounded-xl p-5">
+    <div key={entry.id} className="w-full bg-tertiary rounded-xl p-5">
         <div className="flex w-full place-items-end">
             <p className="font-bold text-end text-xl">{entry.log?.user.name} has read up to page {entry.index}</p>
             <p className="ml-auto text-end text-3xl font-bold"><span className="text-xl font-normal">pg</span>{entry.index}</p>

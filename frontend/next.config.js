@@ -6,6 +6,19 @@ const nextConfig = {
     output: "standalone",
     assetPrefix: isProd ? 'https://cdn.mydomain.com' : undefined,
     distDir: "build",
+    images: {
+        remotePatterns: [{
+            protocol: 'https',
+            hostname: "avatars.githubusercontent.com",
+            port: '',
+            pathname: "/u/**"
+        },{
+            protocol: 'https',
+            hostname: 'books.google.com',
+            port: '',
+            pathname: '/books/**'
+        }]
+    },
     webpack(config) {
         config.module.rules.push({
             test: /\.svg$/,

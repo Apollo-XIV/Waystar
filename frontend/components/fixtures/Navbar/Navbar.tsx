@@ -11,7 +11,9 @@ export default function Navbar() {
 
     return <>
     <header className="w-full fixed top-0 z-30 place-items-center justify-center flex-row flex h-24 bg-secondary">
-        <Logo className="absolute left-8 h-24 w-24" />
+        <Link className="absolute left-8 " href="/">
+            <Logo className="h-24 w-24 hover:scale-105 transition-all cursor-pointer" />
+        </Link>
         <nav>
         <div className="tabs">
             <Link prefetch={false} href={"/timeline"} className={`tab tab-bordered ${(path.startsWith("/timeline")) ? "tab-active" : ""}`}>Timeline</Link> 
