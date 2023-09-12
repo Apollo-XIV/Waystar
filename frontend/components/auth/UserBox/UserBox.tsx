@@ -27,7 +27,7 @@ export default function UserBox() {
             </>}
         </div>
     </> : <>
-        <button onClick={() => signIn("github", {callbackUrl: 'http://localhost:3000/api/auth/signin/github'})} type="button"className="w-48 h-12 bg-accent flex place-items-center justify-center rounded-full cursor-pointer hover:brightness-90 transition-all">
+        <button onClick={() => signIn("google", {callbackUrl: 'http://localhost:3000/logs'})} type="button"className="w-48 h-12 bg-accent flex place-items-center justify-center rounded-full cursor-pointer hover:brightness-90 transition-all">
             <p className="text-sm text-black font-bold">Sign in with <Google className="w-4 h-4 inline-block ml-1 mb-[0.2rem]"/></p>
         </button>
     
