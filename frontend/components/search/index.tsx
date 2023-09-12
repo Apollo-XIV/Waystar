@@ -1,2 +1,2 @@
-import InteractiveSearch from "./InteractiveSearchALT";
+import InteractiveSearch from "./InteractiveSearch";
 export default InteractiveSearch;

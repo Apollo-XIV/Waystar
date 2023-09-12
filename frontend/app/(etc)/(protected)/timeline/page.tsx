@@ -5,6 +5,10 @@ import { User, Entry } from "@/modules/entity"
 
 export default async function Page() {
     const entries = await callAPI("/entries/timeline") as Partial<Entry>[];
+    
+    if (!entries) {
+        return <></>
+    }
 
     return <>
     <div className="flex justify-center place-items-center">

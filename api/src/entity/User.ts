@@ -6,7 +6,7 @@ import { Book, Entry, Log } from "@entities";
 export class User {
 
     @PrimaryColumn()
-    id: number
+    id: string
 
     @Column()
     handle: string

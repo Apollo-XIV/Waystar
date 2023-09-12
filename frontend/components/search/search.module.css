@@ -1,0 +1,38 @@
+.containerSearch {
+    display: grid;
+    grid-template-columns: 0fr;
+    transition: grid-template-columns 500ms;
+    height: 3rem;
+}
+
+.containerSearch > div {
+    overflow: hidden;
+}
+
+.containerSearch[data-show="true"] {
+    width: 100%;
+    grid-template-columns: 1fr;
+}
+
+.containerResults {
+    max-height: 14rem;
+    display: grid;
+    grid-template-rows: 0fr;
+    grid-template-columns: 0fr;
+    transition: grid-template-columns 500ms, grid-template-rows ease-in 500ms;
+    will-change: grid-template-columns, grid-template-rows;
+}
+
+.containerResults > div {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.containerResults > div > a {
+    margin: 0.25rem 0.5rem 0 0.5rem;
+}
+
+.containerResults[data-show="true"] {
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+}

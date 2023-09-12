@@ -6,7 +6,7 @@ export default function Layout({children, modals} : {children: React.ReactNode, 
     return <>
     <Navbar />
     <div className="h-24" />
-    <main className="overscroll-none" style={{ minHeight: "calc(100vh - 20rem)" }} >
+    <main className="overscroll-none relative" style={{ minHeight: "calc(100vh - 20rem)" }} >
         {children}
     </main>
     {modals}
