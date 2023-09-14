@@ -1,7 +1,7 @@
 import Logo from "@/public/logo.svg";
-import Foreground from '@/public/scene/foreground.svg';
-import Midground from '@/public/scene/midground.svg';
-import Background from '@/public/scene/background.svg';
+import Foreground from  "@/public/scene/foreground.svg" ;
+import Midground from  "@/public/scene/midground.svg" ;
+import Background from  "@/public/scene/background.svg" ;
 import Orb from "@/public/scene/orb.svg";
 import SignIn from "@/components/auth/signIn";
 import Footer from "@/components/fixtures/Footer";
@@ -64,13 +64,13 @@ export default function Home() {
 
             <section id="features">
                 <h1 className="font-display text-4xl">40 Million+ Books</h1>
-                <p>With access to over 40 million books and the entire Google Books repository, chances are that we have exactly what you're looking for. Add as many books as you'd like to your account, with the option to group them into categories for convenience.</p>
+                <p>With access to over 40 million books and the entire Google Books repository, chances are that we have exactly what you  re looking for. Add as many books as you  d like to your account, with the option to group them into categories for convenience.</p>
 
                 <h1 className="mt-10 font-display text-4xl text-right">A Feed You Care About</h1>
                 <p className="text-right">Catch up on exciting moments from your latest book or see what your friends have been reading in one place. Every reader is different, but, with a personalised timeline, Waystar makes it easy to engage with the communities you care about.</p>
 
                 <h1 className="mt-10 font-display text-4xl">Leave Virtual Footnotes</h1>
-                <p>Waystar lets you track books using logs. A log is simply a collection of posts, made by you, that keeps note of where in the book you are using page numbers. Each post has a page number attached, meaning posts are only shown to either those who've opted in to spoilers or won't be affected by them. Use posts to write your thoughts on a passage, predictions for what happens next, or simply to add your own personal notes to the book - for those shy of annotating books directly.</p>
+                <p>Waystar lets you track books using logs. A log is simply a collection of posts, made by you, that keeps note of where in the book you are using page numbers. Each post has a page number attached, meaning posts are only shown to either those who  ve opted in to spoilers or won  t be affected by them. Use posts to write your thoughts on a passage, predictions for what happens next, or simply to add your own personal notes to the book - for those shy of annotating books directly.</p>
             </section>
 
             <section id="demo" className="mt-24">
@@ -86,15 +86,15 @@ export default function Home() {
             <section id="testimonies">
 
                 <h1 className="mt-10 font-display text-4xl">What Our Users are Saying</h1>
-                <p>Below is just some of the positive feedback we've received. We're only a small platform so your feedback and thoughts are always appreciated. If you've used Waystar before, please feel free to <a href="/feedback">Take the Survey</a> and your answer may show up here!</p>
+                <p>Below is just some of the positive feedback we  ve received. We  re only a small platform so your feedback and thoughts are always appreciated. If you ve used Waystar before, please feel free to <a href="/feedback">Take the Survey</a> and your answer may show up here!</p>
 
                 <Testimony  title="Mark T. Moniker, June 2023"
-                            content="&quot;I've always enjoyed reading, but Waystar has taken my love for books to a whole new level. The ability to leave virtual notes and interact with fellow readers has made reading a truly immersive and social experience. It's incredibly rewarding to connect with others who share the same literary passion. Waystar has become an essential part of my reading routine.&quot;"
+                            content="&quot;I ve always enjoyed reading, but Waystar has taken my love for books to a whole new level. The ability to leave virtual notes and interact with fellow readers has made reading a truly immersive and social experience. It s incredibly rewarding to connect with others who share the same literary passion. Waystar has become an essential part of my reading routine.&quot;"
                             className="mt-10"
                 />
 
                 <Testimony  title="Sarah G. Alias, May 2023"
-                            content="&quot;Waystar has completely transformed the way I read books. Leaving virtual notes and connecting with other readers has added a whole new dimension to my reading experience. It's like having a book club right at my fingertips! Highly recommended for any book lover out there.&quot;"
+                            content="&quot;Waystar has completely transformed the way I read books. Leaving virtual notes and connecting with other readers has added a whole new dimension to my reading experience. It s like having a book club right at my fingertips! Highly recommended for any book lover out there.&quot;"
                             className="ml-auto mt-5 mb-10"
                 />
 
