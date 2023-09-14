@@ -1,13 +1,24 @@
 import NextAuth, { CookiesOptions } from "next-auth";
 import GithubProvider from "next-auth/providers/github";
+import GoogleProvider from "next-auth/providers/google";
 import { config } from "dotenv";
 
 config();
 if (!process.env.GITHUB_ID || !process.env.GITHUB_SECRET) {
-    console.log(process.env.BUILD)
     if (process.env.BUILD == "true") {
         process.env.GITHUB_ID="";
         process.env.GITHUB_SECRET="";
+        console.log("Using spoofed values for build")
+
+    } else {
+        throw new Error("REQUIRED ENV VARS NOT SET")
+    }
+};
+
+if (!process.env.GOOGLE_AUTH_ID || !process.env.GOOGLE_AUTH_SECRET) {
+    if (process.env.BUILD == "true") {
+        process.env.GOOGLE_AUTH_ID="";
+        process.env.GOOGLE_AUTH_SECRET="";
         console.log("Using spoofed values for build")
 
     } else {
@@ -21,6 +32,10 @@ const handler = NextAuth({
             clientId: process.env.GITHUB_ID,
             clientSecret: process.env.GITHUB_SECRET,
         }),
+        GoogleProvider({
+            clientId: process.env.GOOGLE_AUTH_ID,
+            clientSecret: process.env.GOOGLE_AUTH_SECRET,
+        })
     ],
     session:{
         strategy: "jwt"
