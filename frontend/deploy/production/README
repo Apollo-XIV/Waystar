@@ -1,0 +1,40 @@
+# Production Deployment Files
+***Waystar Frontend Client & CDN***
+
+## Overview
+This folder contains all of the files needed to build and publish the images needed for building the docker images and pushing them to (github)[https://ghcr.io]
+
+To build both images, simply run
+```docker compose build```
+in this directory (waystar/frontend/deploy/production)
+
+from there you can then manually push both using:
+```sh
+docker push ghcr.io/apollo-xiv/waystar-frontend
+```
+
+```sh
+docker push ghcr.io/apollo-xiv/waystar-cdn
+```
+
+This process is automated in github actions however, so it's unlikely that you'll need to do this often.
+
+## Dockerfile Explained
+I'm trying something new with my dockerfiles at the moment, which is stages. These stages allow me to build the docker image in one dockerfile and then pass the build files to two seperate images, all in one file. Hopefully this should reduce workloads and speed up development.
+
+### Compose file Explained
+This file is sort of like a build manager for the dockerfile. The docker file controlls *what* gets build, the compose file is in charge of ***how***.
+
+## Environment
+The production environment is configured using two files:
+- **config.env** - contains any basic configuration options or build steps that don't need to be hidden.
+- **secrets.env** - contains all needed auth keys and isn't tracked when pushed to github
+
+In the future, I may look at deploying using *"sealed-secrets"*, a kubernetes operator that makes it easier to store sensitive values in git respositories.
+
+## Why two images?
+It seems odd to create two images for a single next app, however, as I'm deploying on docker next does a few things differently than it would otherwise. ```next build``` generates two main directories that matter: ```/build/standalone``` and ```build/static```. It automatically splits the static files and assets that will never change into a seperate folder so that we can build an image who's only responsibility is responding to requests, handling API calls, and things that actually require a server. With our static files, we can instead handle them using a seperate image (I'm using nginx at the moment).
+
+In the future, I'm looking at moving the static files into an s3 bucket of some sort, likely configured using either terraform or kubernetes (or maybe both? *kubernetes custom resource definitions wink, wink.*)
+
+

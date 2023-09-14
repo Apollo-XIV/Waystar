@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  waystar-frontend:
+    build:
+      context: ../../
+      dockerfile: deploy/production/dockerfile
+      target: client
+    image: ghcr.io/apollo-xiv/waystar-frontend
+
+    ports:
+      - "3000:3000"
+
+    env_file:
+      - config.env
+      - secrets.env
+  waystar-cdn:
+    build:
+      context: ../../
+      dockerfile: deploy/production/dockerfile
+      target: cdn
+    image: ghcr.io/apollo-xiv/waystar-cdn
