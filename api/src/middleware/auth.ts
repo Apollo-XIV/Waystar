@@ -25,14 +25,11 @@ export const auth = async (req: AuthRequest, res: Response, next: NextFunction) 
             res.status(501).send("Internal server error during auth. Please notify the maintainer if this error persists.")
     })
 
-    const protectedRoute = () => routes.map((route) => {
-        const fn = match(route, {decode: decodeURIComponent});
-        return (!fn(req.url)) ? false : true;
-    }).reduce((accumulator, currentValue) => {
-        return (accumulator || currentValue) ? true : false;
-    }, false);
+    const protectedRoute = (routes: string[]) => routes
+        .map((route) => compareRouteToPath(route, req.url))
+        .reduce(checkIfTruthy);
 
-    if (req.headers.test == "true") {
+    if (req.headers.test == "true" && process.env.NODE_ENV == "dev") {
         console.log("received api test call")
         req.token = {id: parseInt(req.headers.id.toString())}
         next()
@@ -40,15 +37,36 @@ export const auth = async (req: AuthRequest, res: Response, next: NextFunction) 
     }
 
     if (token) {
-        console.log(token);
+        console.log("accepting authed request")
         req.token = token;
-    } else if (protectedRoute()) {
+    } else if (protectedRoute(routes)) {
         res.status(403).send("You are not permitted to access this resource.");
         console.log("denied unauthed request");
         return;
     } else {
-        console.log("accepting unauthed req")
+        console.log("accepting unauthed request to unprotected route")
         req.token = null;
     }
     next()
 }
+
+function compareRouteToPath(route: string, path: string) {
+    const fn = match(route, { decode: decodeURIComponent }); // regex checker
+    const result = (fn(path)) ? true : false;
+    return result;
+}
+
+const checkIfTruthy = (accumulator: Boolean, currentValue: Boolean) => {
+    return (accumulator || currentValue) ? true : false;
+}
+
+// // returns a true or false value for whether or not the route is protected.
+
+// function newFunction(routes: string[], req: AuthRequest) {
+//     return () => routes.map((route) => {
+//         const fn = match(route, { decode: decodeURIComponent });
+//         return (!fn(req.url)) ? false : true;
+//     }).reduce((accumulator, currentValue) => {
+//         return (accumulator || currentValue) ? true : false;
+//     }, false);
+// }

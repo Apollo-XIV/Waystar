@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinTable, ManyToMany } from "typeorm"
 
-import { Book, Log, User } from "@entities";
+import * as e from "@entities";
 
 
 @Entity()
@@ -9,10 +9,10 @@ export class Entry {
     @PrimaryGeneratedColumn()
     id: number
 
-    @ManyToOne(() => Log, (log) => log.entries, {
+    @ManyToOne(() => e.Log, (log) => log.entries, {
         cascade: true
     })
-    log: Log
+    log: e.Log
 
     @Column()
     title: string
@@ -26,9 +26,9 @@ export class Entry {
     @Column()
     uploadDate: Date
 
-    @ManyToMany(()=>)
+    @ManyToMany(()=> e.User, (user) => user.likes)
     @JoinTable()
-    likedBy: User[]
+    likedBy: e.User[]
 
 }
 

@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, ManyToMany } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, ManyToMany, JoinTable } from "typeorm"
 import * as e from "@entities";
 import { createHash } from "crypto";
 
@@ -28,6 +28,7 @@ export class Log {
     gid: string;
 
     @ManyToMany(() => e.Category, (category) => category.logs)
+    @JoinTable()
     categories: e.Category[]
 
     @Column()

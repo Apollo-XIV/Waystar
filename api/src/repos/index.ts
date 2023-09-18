@@ -1,9 +1,10 @@
 import {AppDataSource} from "../data-source";
-import {Book, User, Log, Entry} from "@entities";
+import * as e from "@entities";
 
-const BookRepo = AppDataSource.getRepository(Book);
-const UserRepo = AppDataSource.getRepository(User);
-const LogRepo = AppDataSource.getRepository(Log);
-const EntryRepo = AppDataSource.getRepository(Entry);
+const BookRepo = AppDataSource.getRepository(e.Book);
+const UserRepo = AppDataSource.getRepository(e.User);
+const LogRepo = AppDataSource.getRepository(e.Log);
+const EntryRepo = AppDataSource.getRepository(e.Entry);
+const CategoryRepo = AppDataSource.getRepository(e.Category);
 
-export {BookRepo, UserRepo, LogRepo, EntryRepo};
+export {BookRepo, UserRepo, LogRepo, EntryRepo, CategoryRepo};

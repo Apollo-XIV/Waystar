@@ -1,5 +1,5 @@
-import { Entity, PrimaryColumn, Column, OneToMany } from "typeorm"
-import { Book, Entry, Log } from "@entities";
+import { Entity, PrimaryColumn, Column, OneToMany, ManyToMany, JoinTable } from "typeorm"
+import * as e from "@entities";
 
 
 @Entity()
@@ -20,19 +20,20 @@ export class User {
     @Column("text", {array: true})
     roles: string[]
 
-    @OneToMany(() => Log, (log) => log.user)
-    logs: Log[]
+    @OneToMany(() => e.Log, (log) => log.user)
+    logs: e.Log[]
 
     @Column()
     imgURL: string
 
-    // @OneToMany((() => UserLikes))
-    // likes: UserLikes[]
+    @ManyToMany(() => e.Entry, (entry) => entry.likedBy)
+    likes: e.Entry[]
 
-    // @Column()
-    // followers: FollowedBy[]
+    @ManyToMany(() => e.User, (user) => user.followers)
+    @JoinTable()
+    following: e.User[]
 
-    // @Column()
-    // following: Follower[]
+    @ManyToMany(() => e.User, (user) => user.following)
+    followers: e.User[]
 
 }
