@@ -90,7 +90,9 @@ function Results({results}:{results: GBook[]}) {
 function BookResult({ item }: { item:GBook }) {
     return <>
         <Link href={`/books/${item.id}`} className='p-2 flex gap-2 hover:bg-primary hover:scale-[1.02] transition-all duration-300 ease-out rounded-xl relative h-14'>
-            {(item.volumeInfo.imageLinks) && <img className='h-10 rounded-none' src={item.volumeInfo.imageLinks.thumbnail} /> }
+            {(item.volumeInfo.imageLinks) ? <img className='h-10 rounded-none aspect-[10/16]' src={item.volumeInfo.imageLinks.thumbnail} /> :<>
+                <div className="h-10 aspect-[10/16] bg-gradient-to-tr from-slate-800 to-slate-400 opacity-50  "></div>
+            </>}
             <div key={item.id} className='w-5/6'>
                 <p className='text-md font-sans truncate' >{item.volumeInfo.title}</p>
                 {(item.volumeInfo.authors) ? <p className='truncate text-xs italic'>{item.volumeInfo.authors.toString()}</p> : <></> }

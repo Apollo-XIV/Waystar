@@ -23,4 +23,16 @@ export class User {
     @OneToMany(() => Log, (log) => log.user)
     logs: Log[]
 
+    @Column()
+    imgURL: string
+
+    // @OneToMany((() => UserLikes))
+    // likes: UserLikes[]
+
+    // @Column()
+    // followers: FollowedBy[]
+
+    // @Column()
+    // following: Follower[]
+
 }

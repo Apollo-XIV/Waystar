@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinTable, ManyToMany } from "typeorm"
 
 import { Book, Log, User } from "@entities";
 
@@ -22,6 +22,13 @@ export class Entry {
 
     @Column()
     index: number // this measures how far through the book the entry is
+
+    @Column()
+    uploadDate: Date
+
+    @ManyToMany(()=>)
+    @JoinTable()
+    likedBy: User[]
 
 }
 
