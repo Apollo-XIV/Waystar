@@ -1,5 +1,5 @@
 import { Entity, PrimaryColumn, Column, OneToMany } from "typeorm"
-import { Entry, Log, User } from "@entities";
+import * as e from "@entities";
 
 
 @Entity()
@@ -14,8 +14,8 @@ export class Book {
     @Column("text", {array: true})
     authors: string[]
 
-    @OneToMany(() => Log, (log) => log.book)
-    logs: Log[]
+    @OneToMany(() => e.Log, (log) => log.book)
+    logs: e.Log[]
 }
 
 

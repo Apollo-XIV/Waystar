@@ -1,5 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from "typeorm"
-import { Book, Entry, User } from "@entities";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, ManyToMany } from "typeorm"
+import * as e from "@entities";
 import { createHash } from "crypto";
 
 @Entity()
@@ -11,21 +11,27 @@ export class Log {
     @Column()
     index: number
 
-    @ManyToOne(() => User, (user) => user.logs, {
+    @ManyToOne(() => e.User, (user) => user.logs, {
         cascade: true
     })
-    user: User
+    user: e.User
 
-    @ManyToOne(() => Book, {
+    @ManyToOne(() => e.Book, {
         cascade: true
     })
-    book: Book
+    book: e.Book
 
-    @OneToMany(() => Entry, (entry) => entry.log)
-    entries: Entry[]
+    @OneToMany(() => e.Entry, (entry) => entry.log)
+    entries: e.Entry[]
 
     @Column()
     gid: string;
+
+    @ManyToMany(() => e.Category, (category) => category.logs)
+    categories: e.Category[]
+
+    @Column()
+    lastUpdated: Date;
 
 }
 

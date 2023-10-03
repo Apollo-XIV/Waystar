@@ -1,4 +1,4 @@
-.containerSearch {
+/* .containerSearch {
     display: grid;
     grid-template-columns: 0fr;
     transition: grid-template-columns 500ms;
@@ -12,10 +12,11 @@
 .containerSearch[data-show="true"] {
     width: 100%;
     grid-template-columns: 1fr;
-}
+} */
 
 .containerResults {
     max-height: 14rem;
+    width: fit-content;
     display: grid;
     grid-template-rows: 0fr;
     grid-template-columns: 0fr;
@@ -24,8 +25,10 @@
 }
 
 .containerResults > div {
-    overflow-x: hidden;
+    overflow-x: visible;
     overflow-y: auto;
+    width: 100%;
+
 }
 
 .containerResults > div > a {
@@ -35,4 +38,34 @@
 .containerResults[data-show="true"] {
     grid-template-rows: 1fr;
     grid-template-columns: 1fr;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 0fr;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 500ms, grid-template-columns 500ms;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+
+.container[data-show="true"] {
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+}
+
+.container > .contents {
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    position: relative;
+    min-height: 3rem;
+    min-width: 3rem;
+    border-radius: 1.5rem;
+    pointer-events: none;
+}
+
+.container > .contents > * {
+    pointer-events: auto;
 }
